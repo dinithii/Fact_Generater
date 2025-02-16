@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Fact Generator</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #4b0082, #800080); /* Dark purple gradient background */
+            color: white;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #fff;
+            color: #4b0082;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        button:hover {
+            background-color: #4b0082;
+            color: white;
+        }
+
+        .fact {
+            font-size: 1.5rem;
+            margin-top: 20px;
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Random Fact Generator</h1>
+        <p class="fact">Click the button below to generate a random fact!</p>
+        <button id="generateFact">Generate Fact</button>
+    </div>
+
+    <script>
+        const facts = [
+            "The Eiffel Tower can be 15 cm taller during the summer due to thermal expansion.",
+            "The first oranges weren’t orange.",
+            "The shortest war in history lasted only 38 minutes.",
+            "A small child could swim through the veins of a blue whale.",
+            "Bananas are berries, but strawberries aren’t.",
+            "The unicorn is the national animal of Scotland.",
+            "Octopuses have three hearts.",
+            "The world's largest snowflake was 15 inches wide and 8 inches thick.",
+            "Honey never spoils.",
+            "The first computer virus was created in 1983."
+        ];
+
+        const button = document.getElementById('generateFact');
+        const factText = document.querySelector('.fact');
+
+        button.addEventListener('click', () => {
+            const randomFact = facts[Math.floor(Math.random() * facts.length)];
+            factText.textContent = randomFact;
+            document.body.style.background = `linear-gradient(to right, ${getRandomColor()}, ${getRandomColor()})`;
+        });
+
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+    </script>
+</body>
+
+</html>
